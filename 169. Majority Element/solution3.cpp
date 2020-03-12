@@ -35,22 +35,22 @@
  */
 
 // @lc code=start
-// 哈希表
+// 投票
 class Solution {
  public:
   int majorityElement(vector<int>& nums) {
-    std::unordered_map<int, int> numCounter;
+    int vote = 0;
+    int candidate;
+
     for (const auto& n : nums) {
-      ++numCounter[n];
-    }
-
-    for (const auto& counter : numCounter) {
-      if (counter.second > nums.size() / 2) {
-        return counter.first;
+      if (vote == 0) {
+        candidate = n;
       }
+
+      vote += (n == candidate) ? 1 : -1;
     }
 
-    return 0;
+    return candidate;
   }
 };
 // @lc code=end
