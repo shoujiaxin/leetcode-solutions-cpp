@@ -47,27 +47,17 @@
 class Solution {
  public:
   int findMin(vector<int>& nums) {
-    auto left = nums.cbegin();
-    auto right = nums.cend() - 1;
-
-    // 二分查找
-    // *mid > *right: 最小值位于 [mid + 1, rihgt)
-    // *mid < *right: 最小值 [left, mid)
-    // *mid == *right: 减小搜索范围
-    // 最终 left 指向最小元素
-    while (left != right) {
-      auto mid = left + (right - left) / 2;
-
-      if (*mid > *right) {
-        left = mid + 1;
-      } else if (*mid < *right) {
-        right = mid;
-      } else {
-        --right;
+    // 数组是否被旋转
+    if (nums.front() >= nums.back()) {
+      // 倒序查找最小元素
+      for (auto it = nums.rbegin(); it != nums.rend() - 1; ++it) {
+        if (*(it + 1) > *it) {
+          return *it;
+        }
       }
     }
 
-    return *left;
+    return nums.front();  // 没有旋转，返回数组第一个元素
   }
 };
 // @lc code=end
