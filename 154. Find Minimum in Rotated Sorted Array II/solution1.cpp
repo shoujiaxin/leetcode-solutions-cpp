@@ -51,8 +51,8 @@ class Solution {
     auto right = nums.cend() - 1;
 
     // 二分查找
-    // *mid > *right: 最小值位于 [mid + 1, rihgt)
-    // *mid < *right: 最小值 [left, mid)
+    // *mid > *right: 最小值位于 [mid + 1, rihgt]
+    // *mid < *right: 最小值 [left, mid]
     // *mid == *right: 减小搜索范围
     // 最终 left 指向最小元素
     while (left != right) {
