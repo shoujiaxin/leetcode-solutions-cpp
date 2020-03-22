@@ -1,3 +1,3 @@
 # LeetCode Solutions
 
-C++ Solutions of LeetCode alogrithm problems.
+C++ solutions of LeetCode alogrithm problems.
