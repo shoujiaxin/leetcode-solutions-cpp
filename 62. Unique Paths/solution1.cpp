@@ -60,6 +60,7 @@
 class Solution {
  public:
   int uniquePaths(int m, int n) {
+    // dp[i][j] 表示从 (0, 0) 到达 (i, j) 的路径数
     vector<vector<long>> dp(m, vector<long>(n, 1));
 
     for (int i = 1; i < m; ++i) {
