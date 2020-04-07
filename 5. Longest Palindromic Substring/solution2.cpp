@@ -45,7 +45,7 @@ class Solution {
     int start = 0;   // 记录回文串开始位置
     int maxLen = 1;  // 记录回文串最大长度，单个字符必回文
 
-    // dp[i][j] 表示 s[i, j] 是否回文 (j < j)
+    // dp[i][j] 表示 s[i, j] 是否回文 (i < j)
     vector<vector<bool>> dp(len, vector<bool>(len, false));
 
     for (int i = 0; i < len; ++i) {
