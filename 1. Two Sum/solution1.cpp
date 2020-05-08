@@ -39,8 +39,8 @@ class Solution {
       for (auto secondIter = firstIter + 1; secondIter != nums.cend();
            ++secondIter) {
         if (*firstIter + *secondIter == target) {
-          return {distance(nums.cbegin(), firstIter),
-                  distance(nums.cbegin(), secondIter)};
+          return {static_cast<int>(distance(nums.cbegin(), firstIter)),
+                  static_cast<int>(distance(nums.cbegin(), secondIter))};
         }
       }
     }
