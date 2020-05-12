@@ -39,17 +39,14 @@ class Solution {
       return 0;
     }
 
-    auto len = nums.size();
+    // dp[i] 表示以 nums[i] 结尾的连续子数组的最大和
+    vector<int> dp(nums.cbegin(), nums.cend());
 
-    // dp[i] 表示包含第 i 个元素的最大子序和
-    vector<int> dp(len, 0);
-    dp[0] = nums[0];
-
-    for (int i = 1; i < len; ++i) {
-      dp[i] = max(dp[i - 1], 0) + nums[i];
+    for (auto i = 1; i < nums.size(); ++i) {
+      dp[i] += max(dp[i - 1], 0);
     }
 
-    return *max_element(dp.begin(), dp.end());
+    return *max_element(dp.cbegin(), dp.cend());
   }
 };
 // @lc code=end
