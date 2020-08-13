@@ -53,22 +53,22 @@ class MinStack {
   void push(int x) {
     elements.push_back(x);
 
-    if (elements.size() == 1 || x <= mins[mins.size() - 1]) {
+    if (mins.empty() || x <= mins.back()) {
       mins.push_back(x);
     }
   }
 
   void pop() {
-    if (elements[elements.size() - 1] == mins[mins.size() - 1]) {
+    if (elements.back() == mins.back()) {
       mins.pop_back();
     }
 
     elements.pop_back();
   }
 
-  int top() { return elements[elements.size() - 1]; }
+  int top() { return elements.back(); }
 
-  int getMin() { return mins[mins.size() - 1]; }
+  int getMin() { return mins.back(); }
 
  private:
   std::vector<int> elements;

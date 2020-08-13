@@ -59,12 +59,11 @@ class MinStack {
   }
 
   void pop() {
-    auto num = elements.top();
-    elements.pop();
-
-    if (mins.top() == num) {
+    if (elements.top() == mins.top()) {
       mins.pop();
     }
+
+    elements.pop();
   }
 
   int top() { return elements.top(); }
