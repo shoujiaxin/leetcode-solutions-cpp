@@ -80,8 +80,8 @@ class MedianFinder {
   }
 
  private:
-  priority_queue<int, vector<int>, std::less<int>> A;     // 最小堆
-  priority_queue<int, vector<int>, std::greater<int>> B;  // 最大堆
+  priority_queue<int, vector<int>, std::less<int>> A;     // 最大堆
+  priority_queue<int, vector<int>, std::greater<int>> B;  // 最小堆
 };
 
 /**
