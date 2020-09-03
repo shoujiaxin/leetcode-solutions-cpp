@@ -75,6 +75,7 @@ class Solution {
                  int begin) {
     if (target == 0) {
       res.push_back(path);
+      return;
     }
 
     for (auto i = begin; i < candidates.size(); ++i) {
