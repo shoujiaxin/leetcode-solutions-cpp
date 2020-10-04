@@ -42,38 +42,33 @@
 class Solution {
  public:
   ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
-    ListNode* l = new ListNode(l1->val + l2->val);
-    auto curr = l;
-    l1 = l1->next;
-    l2 = l2->next;
+    auto res = new ListNode(0);
+    auto p = res;
+    auto n = 0;  // 进位
 
-    while (l1 && l2) {
-      ListNode* p = new ListNode(l1->val + l2->val);
-      curr->next = p;
-      curr = p;
+    while (l1 || l2 || n) {
+      auto temp = n;
+      n = 0;
 
-      l1 = l1->next;
-      l2 = l2->next;
-    }
-    curr->next = l1 ? l1 : (l2 ? l2 : nullptr);
-
-    curr = l;
-    while (curr) {
-      if (curr->val > 9) {
-        curr->val = curr->val - 10;
-
-        if (curr->next) {
-          curr->next->val += 1;
-        } else {
-          ListNode* p = new ListNode(1);
-          curr->next = p;
-        }
+      if (l1) {
+        temp += l1->val;
+        l1 = l1->next;
+      }
+      if (l2) {
+        temp += l2->val;
+        l2 = l2->next;
       }
 
-      curr = curr->next;
+      if (temp > 9) {
+        n = 1;
+        temp -= 10;
+      }
+
+      p->next = new ListNode(temp);
+      p = p->next;
     }
 
-    return l;
+    return res->next;
   }
 };
 // @lc code=end
