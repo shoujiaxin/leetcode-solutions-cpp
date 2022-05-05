@@ -54,7 +54,7 @@ class Solution {
     while (!q.empty()) {
       TreeNode* node;
 
-      auto n = q.size();
+      const auto n = q.size();
       for (auto i = 0; i < n; ++i) {
         node = q.front();
         q.pop();
