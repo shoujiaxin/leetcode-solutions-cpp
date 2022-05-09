@@ -43,29 +43,20 @@
 class Solution {
  public:
   bool isAnagram(string s, string t) {
-    map<char, int> charCnt;
+    array<int, 26> charCnt{0};
 
-    for (const auto& c : s) {
-      ++charCnt[c];
+    for (const auto& ch : s) {
+      ++charCnt[ch - 'a'];
     }
 
-    for (const auto& c : t) {
-      if (charCnt.find(c) == charCnt.end()) {
+    for (const auto& ch : t) {
+      if (charCnt[ch - 'a'] == 0) {
         return false;
       }
-
-      if (--charCnt[c] < 0) {
-        return false;
-      }
+      --charCnt[ch - 'a'];
     }
 
-    for (const auto& p : charCnt) {
-      if (p.second != 0) {
-        return false;
-      }
-    }
-
-    return true;
+    return accumulate(charCnt.cbegin(), charCnt.cend(), 0) == 0;
   }
 };
 // @lc code=end
