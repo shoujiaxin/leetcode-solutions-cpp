@@ -39,7 +39,8 @@ class Solution {
  public:
   vector<vector<int>> threeSum(vector<int>& nums) {
     vector<vector<int>> res;
-    if (nums.size() < 3) {
+    const int n = nums.size();
+    if (n < 3) {
       return res;
     }
 
@@ -48,7 +49,7 @@ class Solution {
       return res;  // 最小的元素大于 0，不存在三数和为 0
     }
 
-    for (int i = 0; i < nums.size() - 2; ++i) {
+    for (int i = 0; i < n - 2; ++i) {
       if (nums[i] > 0) {
         return res;  // 之后的数都大于 0，直接返回
       }
@@ -57,15 +58,15 @@ class Solution {
       }
 
       auto l = i + 1;
-      auto r = nums.size() - 1;
+      auto r = n - 1;
       while (l < r) {
-        auto sum = nums[i] + nums[l] + nums[r];
+        const auto sum = nums[i] + nums[l] + nums[r];
         if (sum < 0) {
           ++l;
         } else if (sum > 0) {
           --r;
         } else {
-          res.push_back({nums[i], nums[l], nums[r]});
+          res.emplace_back(vector<int>{nums[i], nums[l], nums[r]});
 
           // 避免重复解
           while (l < r && nums[l] == nums[l + 1]) {
